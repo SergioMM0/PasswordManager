@@ -20,6 +20,7 @@ public class MainWindowController {
     }
 
     public void AddAccount(Account newAccount) {
+        var account = _accountDAO.InsertAccount(newAccount);
         Accounts.Add(newAccount);
     }
 
@@ -31,6 +32,12 @@ public class MainWindowController {
     }
 
     public void DeleteAccount(Account account) {
+        try {
+            _accountDAO.DeleteAccount(account.Id);
+        }
+        catch (Exception e) {
+            Console.WriteLine(e.Message);
+        }
         Accounts.Remove(account);
     }
 }

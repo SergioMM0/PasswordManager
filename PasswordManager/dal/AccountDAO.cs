@@ -29,18 +29,27 @@ public class AccountDAO {
         return accounts;
     }
 
-    public void InsertAccount(Account account) {
+    public Account InsertAccount(Account account) {
         using var connection = new SqliteConnection(_connectionString);
         connection.Open();
+    
         var command = connection.CreateCommand();
+    
         command.CommandText = @"
-                    INSERT INTO Accounts (Provider, Username, Password)
-                    VALUES ($provider, $username, $password)";
-        command.Parameters.AddWithValue("provider", account.Provider);
+        INSERT INTO Accounts (Provider, Username, Password)
+        VALUES ($provider, $username, $password);
+        SELECT last_insert_rowid();";
+    
+        command.Parameters.AddWithValue("$provider", account.Provider);
         command.Parameters.AddWithValue("$username", account.Username);
         command.Parameters.AddWithValue("$password", account.Password);
-        command.ExecuteNonQuery();
+    
+        account.Id = Convert.ToInt32(command.ExecuteScalar());
+
+        return account;
     }
+
+
 
     public void UpdateAccount(Account account) {
         using var connection = new SqliteConnection(_connectionString);

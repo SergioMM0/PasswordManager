@@ -5,17 +5,22 @@ using PasswordManager.gui.controllers;
 namespace PasswordManager.gui;
 
 public partial class MainWindow : Window {
-    private MainWindowController _windowController;
+    private MainWindowController _controller;
 
     public MainWindow() {
         InitializeComponent();
-        _windowController = new MainWindowController();
-        AccountDataGrid.ItemsSource = _windowController.Accounts;
+        _controller = new MainWindowController();
+        DataContext = _controller;
+        AccountDataGrid.ItemsSource = _controller.Accounts;
     }
 
     private void AddButton_Click(object sender, RoutedEventArgs e) {
-        var newAccount = new Account { Provider = "Twitter", Username = "newuser", Password = "newpass" };
-        _windowController.AddAccount(newAccount);
+
+        var dialog = new AddAccountDialog();
+        if (dialog.ShowDialog() == true) {
+            var newAccount = dialog.NewAccount;
+            _controller.AddAccount(newAccount);
+        }
     }
 
     private void EditButton_Click(object sender, RoutedEventArgs e) {
@@ -27,7 +32,7 @@ public partial class MainWindow : Window {
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e) {
         if (AccountDataGrid.SelectedItem is Account selectedAccount) {
-            _windowController.DeleteAccount(selectedAccount);
+            _controller.DeleteAccount(selectedAccount);
         }
     }
 }
