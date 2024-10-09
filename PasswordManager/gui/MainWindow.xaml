@@ -1,12 +1,23 @@
-﻿<Window x:Class="PasswordManager.MainWindow"
+﻿<Window x:Class="PasswordManager.gui.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PasswordManager"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Account Manager" Height="350" Width="500">
     <Grid>
+        <DataGrid Name="AccountDataGrid" AutoGenerateColumns="False"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                  Margin="10,10,10,60" IsReadOnly="True" SelectionMode="Single">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Provider" Binding="{Binding Provider}" Width="*"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding Password}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom" Margin="10,0,10,10">
+            <Button Content="Add" Width="80" Margin="5" Click="AddButton_Click"/>
+            <Button Content="Edit" Width="80" Margin="5" Click="EditButton_Click"/>
+            <Button Content="Delete" Width="80" Margin="5" Click="DeleteButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

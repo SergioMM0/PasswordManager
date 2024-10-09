@@ -1,8 +1,6 @@
-﻿using System.Configuration;
-using System.Data;
-using System.Windows;
+﻿using System.Windows;
 
-namespace PasswordManager;
+namespace PasswordManager.gui;
 
 /// <summary>
 /// Interaction logic for App.xaml
