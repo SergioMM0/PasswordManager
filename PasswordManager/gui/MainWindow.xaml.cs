@@ -1,21 +1,21 @@
 ﻿using System.Windows;
 using PasswordManager.be;
-using PasswordManager.gui.models;
+using PasswordManager.gui.controllers;
 
 namespace PasswordManager.gui;
 
 public partial class MainWindow : Window {
-    private MainWindowModel _windowModel;
+    private MainWindowController _windowController;
 
     public MainWindow() {
         InitializeComponent();
-        _windowModel = new MainWindowModel();
-        AccountDataGrid.ItemsSource = _windowModel.Accounts;
+        _windowController = new MainWindowController();
+        AccountDataGrid.ItemsSource = _windowController.Accounts;
     }
 
     private void AddButton_Click(object sender, RoutedEventArgs e) {
         var newAccount = new Account { Provider = "Twitter", Username = "newuser", Password = "newpass" };
-        _windowModel.AddAccount(newAccount);
+        _windowController.AddAccount(newAccount);
     }
 
     private void EditButton_Click(object sender, RoutedEventArgs e) {
@@ -27,7 +27,7 @@ public partial class MainWindow : Window {
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e) {
         if (AccountDataGrid.SelectedItem is Account selectedAccount) {
-            _windowModel.DeleteAccount(selectedAccount);
+            _windowController.DeleteAccount(selectedAccount);
         }
     }
 }

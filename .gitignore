@@ -406,3 +406,4 @@ ASALocalRun/
 API/appsettings.Development.json
 API/appsettings.json
 API/appsettings.Production.json
+PasswordManager/accounts.db

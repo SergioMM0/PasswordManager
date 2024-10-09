@@ -1,17 +1,22 @@
 ﻿using System.Collections.ObjectModel;
 using PasswordManager.be;
+using PasswordManager.dal;
 
-namespace PasswordManager.gui.models;
+namespace PasswordManager.gui.controllers;
 
-public class MainWindowModel {
+public class MainWindowController {
+    private readonly AccountDAO _accountDAO;
+
     public ObservableCollection<Account> Accounts { get; set; }
 
-    public MainWindowModel() {
-        // Initialize with sample data
-        Accounts = new ObservableCollection<Account> {
-            new Account { Provider = "Email", Username = "user@example.com", Password = "password123" },
-            new Account { Provider = "Bank", Username = "user2", Password = "securepassword" }
-        };
+    public MainWindowController() {
+        _accountDAO = new AccountDAO();
+        LoadAccounts();
+    }
+
+    private void LoadAccounts() {
+        var accountsFromDb = _accountDAO.GetAllAccounts();
+        Accounts = new ObservableCollection<Account>(accountsFromDb);
     }
 
     public void AddAccount(Account newAccount) {
