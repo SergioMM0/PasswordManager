@@ -10,14 +10,14 @@ namespace PasswordManager.gui {
         }
 
         private void OkButton_Click(object sender, RoutedEventArgs e) {
-            if (!string.IsNullOrWhiteSpace(ProviderTextBox.Text) &&
-                !string.IsNullOrWhiteSpace(UsernameTextBox.Text) &&
-                !string.IsNullOrWhiteSpace(PasswordBox.Password)) {
+            if (!string.IsNullOrWhiteSpace(ProviderForm.Text) &&
+                !string.IsNullOrWhiteSpace(UsernameForm.Text) &&
+                !string.IsNullOrWhiteSpace(PasswordForm.Password)) {
                 
                 NewAccount = new Account {
-                    Provider = ProviderTextBox.Text,
-                    Username = UsernameTextBox.Text,
-                    Password = PasswordBox.Password
+                    Provider = ProviderForm.Text,
+                    Username = UsernameForm.Text,
+                    Password = PasswordForm.Password
                 };
 
                 DialogResult = true;

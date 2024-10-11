@@ -15,7 +15,6 @@ public partial class MainWindow : Window {
     }
 
     private void AddButton_Click(object sender, RoutedEventArgs e) {
-
         var dialog = new AddAccountDialog();
         if (dialog.ShowDialog() == true) {
             var newAccount = dialog.NewAccount;

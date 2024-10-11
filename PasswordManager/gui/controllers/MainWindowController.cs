@@ -21,7 +21,7 @@ public class MainWindowController {
 
     public void AddAccount(Account newAccount) {
         var account = _accountDAO.InsertAccount(newAccount);
-        Accounts.Add(newAccount);
+        Accounts.Add(account);
     }
 
     public void UpdateAccount(Account existingAccount, Account updatedAccount) {
