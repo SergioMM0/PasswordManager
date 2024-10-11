@@ -45,3 +45,7 @@ This application employs several security measures to protect your sensitive dat
 4. All sensitive data stored in the database is encrypted, ensuring that it cannot be accessed in raw form even if an attacker gains access to the database.
 
 5. The app requires the user to authenticate with their Master Password upon each login. This ensures that only authorized users can access the stored passwords.
+
+# Pitfalls
+
+1. If the user forget its Master Password, the system doesn't allow the user to modify it and/or restart the application. The only way to restart the application is by manually deleting the .db file.
