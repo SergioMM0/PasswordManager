@@ -2,10 +2,10 @@
 
 namespace PasswordManager.dal;
 
-public class DatabaseManager {
+public class DatabaseInitializer {
     private const string ConnectionString = "Data Source=wow.db";
 
-    public DatabaseManager() {
+    public DatabaseInitializer() {
         CreateAccountsTableIfNotExists();
         CreateMasterKeyTableIfNotExists();
     }
@@ -24,7 +24,6 @@ public class DatabaseManager {
         command.ExecuteNonQuery();
     }
         
-    // Method to create the MasterKey table if it doesn't exist
     private void CreateMasterKeyTableIfNotExists() {
         using var connection = new SqliteConnection(ConnectionString);
         connection.Open();

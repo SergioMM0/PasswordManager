@@ -25,11 +25,8 @@ public class MainWindowModel {
         Accounts.Add(account);
     }
 
-    public void UpdateAccount(Account existingAccount, Account updatedAccount) {
-        int index = Accounts.IndexOf(existingAccount);
-        if (index >= 0) {
-            Accounts[index] = updatedAccount;
-        }
+    public void UpdateAccount(Account updatedAccount) {
+        _accountDAO.UpdateAccount(updatedAccount);
     }
 
     public void DeleteAccount(Account account) {

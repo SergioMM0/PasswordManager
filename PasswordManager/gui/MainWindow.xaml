@@ -15,8 +15,8 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
                     VerticalAlignment="Bottom" Margin="10,0,10,10">
-            <Button Content="Add" Width="80" Margin="5" Click="AddButton_Click"/>
-            <Button Content="Edit" Width="80" Margin="5" Click="EditButton_Click"/>
+            <Button Content="Add account" Width="160" Margin="5" Click="AddButton_Click"/>
+            <Button Content="Refresh Password" Width="160" Margin="5" Click="RefreshButton_Click"/>
             <Button Content="Delete" Width="80" Margin="5" Click="DeleteButton_Click"/>
         </StackPanel>
     </Grid>
