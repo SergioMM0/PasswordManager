@@ -2,21 +2,22 @@
 using PasswordManager.be;
 using PasswordManager.dal;
 
-namespace PasswordManager.gui.controllers;
+namespace PasswordManager.gui.models;
 
-public class MainWindowController {
+public class MainWindowModel {
     private readonly AccountDAO _accountDAO;
 
     public ObservableCollection<Account> Accounts { get; set; }
 
-    public MainWindowController() {
+    public MainWindowModel() {
         _accountDAO = new AccountDAO();
+        Accounts = new ObservableCollection<Account>();
         LoadAccounts();
     }
 
     private void LoadAccounts() {
         var accountsFromDb = _accountDAO.GetAllAccounts();
-        Accounts = new ObservableCollection<Account>(accountsFromDb);
+        foreach (var account in accountsFromDb) Accounts.Add(account);
     }
 
     public void AddAccount(Account newAccount) {
@@ -32,12 +33,7 @@ public class MainWindowController {
     }
 
     public void DeleteAccount(Account account) {
-        try {
-            _accountDAO.DeleteAccount(account.Id);
-        }
-        catch (Exception e) {
-            Console.WriteLine(e.Message);
-        }
+        _accountDAO.DeleteAccount(account.Id);
         Accounts.Remove(account);
     }
 }

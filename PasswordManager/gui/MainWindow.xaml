@@ -8,8 +8,8 @@
                   Margin="10,10,10,60" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Provider" Binding="{Binding Provider}" Width="*"/>
-                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*"/>
-                <DataGridTextColumn Header="Password" Binding="{Binding Password}" Width="*"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding MaskedUsername}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding MaskedPassword}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
 

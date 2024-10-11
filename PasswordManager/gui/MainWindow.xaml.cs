@@ -1,24 +1,24 @@
 ﻿using System.Windows;
 using PasswordManager.be;
-using PasswordManager.gui.controllers;
+using PasswordManager.gui.models;
 
 namespace PasswordManager.gui;
 
 public partial class MainWindow : Window {
-    private MainWindowController _controller;
+    private MainWindowModel _model;
 
     public MainWindow() {
         InitializeComponent();
-        _controller = new MainWindowController();
-        DataContext = _controller;
-        AccountDataGrid.ItemsSource = _controller.Accounts;
+        _model = new MainWindowModel();
+        DataContext = _model;
+        AccountDataGrid.ItemsSource = _model.Accounts;
     }
 
     private void AddButton_Click(object sender, RoutedEventArgs e) {
         var dialog = new AddAccountDialog();
         if (dialog.ShowDialog() == true) {
             var newAccount = dialog.NewAccount;
-            _controller.AddAccount(newAccount);
+            _model.AddAccount(newAccount);
         }
     }
 
@@ -31,7 +31,7 @@ public partial class MainWindow : Window {
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e) {
         if (AccountDataGrid.SelectedItem is Account selectedAccount) {
-            _controller.DeleteAccount(selectedAccount);
+            _model.DeleteAccount(selectedAccount);
         }
     }
 }
