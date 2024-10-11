@@ -24,7 +24,7 @@ namespace PasswordManager.gui {
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e) {
             if (AccountDataGrid.SelectedItem is Account selectedAccount) {
-                string newPassword = PasswordGenerator.GenerateSecurePassword(16);
+                string newPassword = util.TheTruePasswordManager.GenerateSecurePassword(16);
 
                 selectedAccount.Password = newPassword;
 
