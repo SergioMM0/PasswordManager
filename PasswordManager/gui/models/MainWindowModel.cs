@@ -9,8 +9,8 @@ public class MainWindowModel {
 
     public ObservableCollection<Account> Accounts { get; set; }
 
-    public MainWindowModel() {
-        _accountDAO = new AccountDAO();
+    public MainWindowModel(string password) {
+        _accountDAO = new AccountDAO(password);
         Accounts = new ObservableCollection<Account>();
         LoadAccounts();
     }

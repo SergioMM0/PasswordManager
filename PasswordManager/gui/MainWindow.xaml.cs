@@ -7,9 +7,9 @@ namespace PasswordManager.gui;
 public partial class MainWindow : Window {
     private MainWindowModel _model;
 
-    public MainWindow() {
+    public MainWindow(string password) {
         InitializeComponent();
-        _model = new MainWindowModel();
+        _model = new MainWindowModel(password);
         DataContext = _model;
         AccountDataGrid.ItemsSource = _model.Accounts;
     }
