@@ -4,20 +4,63 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         mc:Ignorable="d"
-        Title="Enter Master Password" Height="250" Width="400">
+        Title="Enter Master Password" Height="300" Width="400"
+        WindowStartupLocation="CenterScreen"
+        Background="#2E3B4E"
+        Foreground="White"
+        FontFamily="Segoe UI">
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        
-        <TextBlock Text="Enter Password:" VerticalAlignment="Center" FontSize="16" Grid.Row="0"/>
-        <PasswordBox Name="PasswordTextBox" Grid.Row="1" Margin="10,10,10,10" FontSize="14"/>
+
+        <TextBlock Text="Enter Master Password"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"
+                   Foreground="White"/>
+
+        <PasswordBox Name="PasswordTextBox"
+                     Grid.Row="1"
+                     Width="250"
+                     HorizontalAlignment="Center"
+                     Padding="10"
+                     Margin="0,10,0,20"
+                     FontSize="14"
+                     Background="#4A5568"
+                     Foreground="White"
+                     BorderBrush="#CBD5E0"
+                     BorderThickness="2"/>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
-            <Button Name="EnterButton" Content="Enter" Width="100" Margin="10" Click="EnterButton_Click"/>
-            <Button Name="CancelButton" Content="Cancel" Width="100" Margin="10" Click="CancelButton_Click"/>
+            <Button Name="EnterButton"
+                    Content="Enter"
+                    Width="100"
+                    Margin="10"
+                    Padding="10"
+                    Background="#48BB78"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    Click="EnterButton_Click"
+                    Cursor="Hand"/>
+
+            <Button Name="CancelButton"
+                    Content="Cancel"
+                    Width="100"
+                    Margin="10"
+                    Padding="10"
+                    Background="#F56565"
+                    Foreground="White"
+                    FontWeight="Bold"
+                    BorderThickness="0"
+                    Click="CancelButton_Click"
+                    Cursor="Hand"/>
         </StackPanel>
     </Grid>
 </Window>

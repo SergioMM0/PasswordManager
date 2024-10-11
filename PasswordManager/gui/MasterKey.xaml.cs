@@ -42,8 +42,8 @@ namespace PasswordManager.gui {
                 var masterKeyData = _masterKeyDao.GetMasterKey();
 
                 if (masterKeyData != null) {
-                    string storedHashedPassword = masterKeyData.Value.HashedKey;
-                    string storedSalt = masterKeyData.Value.Salt;
+                    var storedHashedPassword = masterKeyData.Value.HashedKey;
+                    var storedSalt = masterKeyData.Value.Salt;
 
                     // Verify the entered password with the stored hashed password
                     if (TheTruePasswordManager.VerifyPassword(enteredPassword, storedHashedPassword, storedSalt)) {

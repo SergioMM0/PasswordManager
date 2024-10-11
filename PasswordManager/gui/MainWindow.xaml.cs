@@ -24,21 +24,37 @@ namespace PasswordManager.gui {
 
         private void RefreshButton_Click(object sender, RoutedEventArgs e) {
             if (AccountDataGrid.SelectedItem is Account selectedAccount) {
-                string newPassword = util.TheTruePasswordManager.GenerateSecurePassword(16);
+                var result = MessageBox.Show("Are you sure you want to update the password for this account?",
+                    "Confirm Password Update",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
 
-                selectedAccount.Password = newPassword;
-
-                // Call the model's update account method
-                _model.UpdateAccount(selectedAccount);
-
-                // Refresh the UI
-                AccountDataGrid.Items.Refresh();
+                if (result == MessageBoxResult.Yes) {
+                    var newPassword = TheTruePasswordManager.GenerateSecurePassword(16);
+                    selectedAccount.Password = newPassword;
+                    _model.UpdateAccount(selectedAccount);
+                    AccountDataGrid.Items.Refresh();
+                    MessageBox.Show("Password updated successfully.");
+                }
+            }
+            else {
+                MessageBox.Show("Please select an account.");
             }
         }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e) {
             if (AccountDataGrid.SelectedItem is Account selectedAccount) {
                 _model.DeleteAccount(selectedAccount);
+            }
+        }
+
+        private void CopyPasswordButton_Click(object sender, RoutedEventArgs e) {
+            if (AccountDataGrid.SelectedItem is Account selectedAccount) {
+                Clipboard.SetText(selectedAccount.Password);
+            }
+            else {
+                MessageBox.Show("Please select an account.");
             }
         }
     }
